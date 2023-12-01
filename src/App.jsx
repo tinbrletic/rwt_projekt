@@ -46,7 +46,7 @@ const YourReactComponent = () => {
         <div>
             <form>
                 {/* Input for a username */}
-                <label htmlFor="username">Username:</label>
+                <label htmlFor="username">Ime:</label>
                 <input
                     type="text"
                     id="username"
@@ -57,9 +57,10 @@ const YourReactComponent = () => {
                 />
                 
                 {/* Input for a password */}
-                <label htmlFor="password">Password:</label>
+                <label htmlFor="password">Prezime:</label>
                 <input
-                    type="password"
+                    
+                    type="text"
                     id="password"
                     name="password"
                     value={formData.password}
