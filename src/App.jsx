@@ -17,8 +17,13 @@ const YourReactComponent = () => {
         });
     };
 
-    const handleFormSubmit = () => {
+    const handleFormSubmit =async  (e) => {
+        e.preventDefault();
+        console.log(e)
+        console.log(formData)
         // Send data to the backend (replace with your backend URL)
+
+        const result = await fetch("");
         fetch('http://localhost:8080/api/submit', {
             method: 'POST',
             headers: {
@@ -44,9 +49,11 @@ const YourReactComponent = () => {
 
     return (
         <div>
-            <form>
+            <h2>Najmoderniji oglasnik za nekretnine u PGŽ</h2>
+            <form id='contanier' className='inputForm' onSubmit={handleFormSubmit}>
                 {/* Input for a username */}
-                <label htmlFor="username">Ime:</label>
+                <div>
+                <label htmlFor="username">Ime: </label>
                 <input
                     type="text"
                     id="username"
@@ -54,10 +61,10 @@ const YourReactComponent = () => {
                     value={formData.username}
                     onChange={handleInputChange}
                     required
-                />
-                
+                /></div>
                 {/* Input for a password */}
-                <label htmlFor="password">Prezime:</label>
+                <div>
+                <label htmlFor="password">Prezime: </label>
                 <input
                     
                     type="text"
@@ -67,11 +74,13 @@ const YourReactComponent = () => {
                     onChange={handleInputChange}
                     required
                 />
-
+                </div>
                 {/* Button to submit the form */}
-                <button type="button" onClick={handleFormSubmit}>
+                <div>
+                <button type="submit">
                     Submit
                 </button>
+                </div>
             </form>
             
             {/* Button that changes color based on the response 
