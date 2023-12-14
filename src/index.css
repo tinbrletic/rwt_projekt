@@ -13,7 +13,12 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-
+div{
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+}
 a {
   font-weight: 500;
   color: #646cff;
@@ -28,7 +33,7 @@ h2{
 
 body {
   margin: 0;
-  display: flex;
+  display: flex; 
   align-items: center;
   justify-content: center;
   
@@ -76,5 +81,10 @@ button:focus-visible {
 .inputForm{
   display:flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
+}
+
+.login-form{
+  align-items: center;
+  justify-content: center;
 }

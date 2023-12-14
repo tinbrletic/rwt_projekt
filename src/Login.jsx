@@ -1,5 +1,3 @@
-// YourReactComponent.js
-
 import React, { useState } from 'react';
 
 const YourReactComponent = () => {
@@ -35,11 +33,6 @@ const YourReactComponent = () => {
         .then(data => {
             console.log('Success:', data);
             // Handle success response from the backend
-
-            // Assuming the backend responds with 'hey'
-            if (data === 'hey') {
-                setButtonColor('green');
-            }
         })
         .catch(error => {
             console.error('Error:', error);
@@ -48,12 +41,12 @@ const YourReactComponent = () => {
     };
 
     return (
-        <div>
+        <div class="login-form">
             <h2>Najmoderniji oglasnik za nekretnine u PGŽ</h2>
             <form id='contanier' className='inputForm' onSubmit={handleFormSubmit}>
                 {/* Input for a username */}
                 <div>
-                <label htmlFor="username">Ime: </label>
+                <label htmlFor="username">Username: </label>
                 <input
                     type="text"
                     id="username"
@@ -64,10 +57,9 @@ const YourReactComponent = () => {
                 /></div>
                 {/* Input for a password */}
                 <div>
-                <label htmlFor="password">Prezime: </label>
+                <label htmlFor="password">Password: </label>
                 <input
-                    
-                    type="text"
+                    type="password"
                     id="password"
                     name="password"
                     value={formData.password}
@@ -78,15 +70,22 @@ const YourReactComponent = () => {
                 {/* Button to submit the form */}
                 <div>
                 <button type="submit">
-                    Submit
+                    Login
                 </button>
                 </div>
+                <div>
+                    Ako nemaš račun, {' '}
+                    <span
+                        style={{ color: 'blue', cursor: 'pointer' }}
+                        onClick={() => {
+                            // Redirect to the registration page (replace with your logic)
+                            window.location.href = '/Register.jsx';
+                        }}
+                    >
+                        registriraj se!
+                    </span>
+                </div>
             </form>
-            
-            {/* Button that changes color based on the response 
-            <button style={{ backgroundColor: buttonColor }} onClick={handleButtonClick}>
-                Click me
-            </button>*/}
             
         </div>
     );
