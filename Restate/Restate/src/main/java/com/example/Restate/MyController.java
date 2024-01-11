@@ -11,13 +11,46 @@ import java.security.NoSuchAlgorithmException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 
 @RestController
 @RequestMapping()
 public class MyController {
 	
     @Autowired
-    private MongoTemplate mongoTemplate;	
+    private MongoTemplate mongoTemplate;
+    
+    @PostMapping("/register")
+    public String register(@RequestBody RegistrationData registrationData) {
+        // Hash the password before saving it
+        String hashedPassword = hashData(registrationData.getPassword());
+
+        // Create a User object with registration data
+        User user = new User();
+        user.setUsername(registrationData.getUsername());
+        user.setHashedPassword(hashedPassword);
+
+        // Save the user data to the database
+        mongoTemplate.save(user, "users");
+
+        return "Registration successful";
+    }
+    
+    @PostMapping("/login")
+    public String login(@RequestBody LoginData loginData) {
+        // Retrieve the user from the database based on the username
+        User user = mongoTemplate.findOne(
+                Query.query(Criteria.where("username").is(loginData.getUsername())),
+                User.class, "users");
+
+        // Check if the user exists and if the provided password is correct
+        if (user != null && verifyPassword(loginData.getPassword(), user.getHashedPassword())) {
+            return "Login successful";
+        } else {
+            return "Invalid credentials";
+        }
+    }
 	
 	@GetMapping("/greet")
 	public String greet() {
@@ -54,5 +87,13 @@ public class MyController {
             return null;
         }
     }
+    
+    private boolean verifyPassword(String inputPassword, String hashedPassword) {
+        // Hash the input password and compare it with the stored hashed password
+        String hashedInputPassword = hashData(inputPassword);
+        return hashedInputPassword != null && hashedInputPassword.equals(hashedPassword);
+    }
+    
+    
 	
 }
