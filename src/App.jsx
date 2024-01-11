@@ -12,7 +12,7 @@ function App() {
         <div>
             <Router>
 
-                <Navbar />
+            <Navbar sticky="top" />
 
                 <Routes>
                 <Route exact path='/'element={<LoginPage />} />
