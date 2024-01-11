@@ -89,7 +89,7 @@ const RegisterPage = () => {
                         style={{ color: 'blue', cursor: 'pointer' }}
                         onClick={() => {
                             // Redirect to the registration page (replace with your logic)
-                            window.location.href = '/Login.jsx';
+                            window.location.href = '/';
                         }}
                     >
                         ulogiraj se!

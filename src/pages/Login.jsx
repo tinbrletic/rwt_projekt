@@ -22,7 +22,7 @@ const YourReactComponent = () => {
         // Send data to the backend (replace with your backend URL)
 
         const result = await fetch("");
-        fetch('http://localhost:8080/api/submit', {
+        fetch('http://localhost:8080/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -78,8 +78,7 @@ const YourReactComponent = () => {
                     <span
                         style={{ color: 'blue', cursor: 'pointer' }}
                         onClick={() => {
-                            // Redirect to the registration page (replace with your logic)
-                            window.location.href = '/Register.jsx';
+                            window.location.href = '/Register';
                         }}
                     >
                         registriraj se!
