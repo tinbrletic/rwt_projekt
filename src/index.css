@@ -14,38 +14,32 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-div{
+/*
+{
   display: flex;
   flex-direction: column;
   justify-content:center;
   align-items: center;
 }
+*/
 a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
 }
-a:hover {
-  color: #535bf2;
-}
-h2{
-  font-family:'Times New Roman', Times, serif;
-}
+
 
 body {
+  /*
   margin: 0;
   display: flex; 
   align-items: center;
   justify-content: center;
-  
+  */
   min-width: 320px;
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
 
 button {
   border-radius: 8px;
@@ -66,26 +60,15 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
 .inputForm{
+  padding-top: 2rem;
   display:flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 
 .login-form{
+  padding-top: 4rem;
   align-items: center;
   justify-content: center;
 }

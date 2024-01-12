@@ -69,7 +69,7 @@ const YourReactComponent = () => {
                 </div>
                 {/* Button to submit the form */}
                 <div>
-                <button type="submit">
+                <button type="submit" class="LoginButton">
                     Login
                 </button>
                 </div>

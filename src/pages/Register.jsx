@@ -44,7 +44,7 @@ const RegisterPage = () => {
     };
 
     return (
-        <div>
+        <div class='login-form'>
             <h2>Najmoderniji oglasnik za nekretnine u PGŽ</h2>
             <form className="inputForm" onSubmit={handleFormSubmit}>
                 <div>
@@ -81,7 +81,7 @@ const RegisterPage = () => {
                     />
                 </div>
                 <div>
-                    <button type="submit">Register</button>
+                    <button type="submit" class="LoginButton">Register</button>
                 </div>
                 <div>
                     Imaš račun,{' '}
