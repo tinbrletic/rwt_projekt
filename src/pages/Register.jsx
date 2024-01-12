@@ -21,7 +21,7 @@ const RegisterPage = () => {
         console.log(formData);
 
         try {
-            const response = await fetch('http://localhost:8080/api/register', {
+            const response = await fetch('http://localhost:8080/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ const RegisterPage = () => {
                         style={{ color: 'blue', cursor: 'pointer' }}
                         onClick={() => {
                             // Redirect to the registration page (replace with your logic)
-                            window.location.href = '/';
+                            window.location.href = '/login';
                         }}
                     >
                         ulogiraj se!

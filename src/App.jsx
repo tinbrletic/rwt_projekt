@@ -15,7 +15,7 @@ function App() {
             <Navbar sticky="top" />
 
                 <Routes>
-                <Route exact path='/'element={<LoginPage />} />
+                <Route exact path='/login'element={<LoginPage />} />
                 <Route path='/register'element={<RegisterPage />} />
                 
                 </Routes>
