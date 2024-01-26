@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Navbar from './components/header/Navbar.jsx'
 import RegisterPage from './pages/Register.jsx';
 import LoginPage from './pages/Login.jsx';
+import HomePage from './pages/Home.jsx';
 import './App.css'
 
 
@@ -15,6 +16,7 @@ function App() {
             <Navbar sticky="top" />
 
                 <Routes>
+                <Route exact path='/'element={<HomePage />} />
                 <Route exact path='/login'element={<LoginPage />} />
                 <Route path='/register'element={<RegisterPage />} />
                 
