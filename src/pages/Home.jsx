@@ -1,106 +1,154 @@
 import React, { useState } from 'react';
 
+
 const Home = () => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [isChecked, setIsChecked] = useState(false);
-    const [selectedOption, setSelectedOption] = useState('');
-    const [image, setImage] = useState(null); // Add state for the image
+        const [street, setStreet] = useState('');
+        const [sqMeters, setSqMeters] = useState(0);
+        const [floors, setFloors] = useState(0);
+        const [numOfRooms, setNumOfRooms] = useState(0);
+        const [numOfBathrooms, setNumOfBathrooms] = useState(0);
+        const [yearOfConstruction, setYearOfConstruction] = useState(0);
+        const [numOfResidents, setNumOfResidents] = useState(0);
+        const [hasParking, setHasParking] = useState(false);
+        const [pictureUrl, setPictureUrl] = useState('');
 
-    const handleNameChange = (e) => {
-        setName(e.target.value);
-    };
+        const handleStreetChange = (e) => {
+            setStreet(e.target.value);
+        };
 
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value);
-    };
+        const handleSqMetersChange = (e) => {
+            setSqMeters(parseInt(e.target.value));
+        };
 
-    const handleCheckboxChange = (e) => {
-        setIsChecked(e.target.checked);
-    };
+        const handleFloorsChange = (e) => {
+            setFloors(parseInt(e.target.value));
+        };
 
-    const handleDropdownChange = (e) => {
-        setSelectedOption(e.target.value);
-    };
+        const handleNumOfRoomsChange = (e) => {
+            setNumOfRooms(parseInt(e.target.value));
+        };
 
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        setImage(file);
-    };
+        const handleNumOfBathroomsChange = (e) => {
+            setNumOfBathrooms(parseInt(e.target.value));
+        };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        
-        try {
-            // Prepare the data to be sent to the backend
-            const data = new FormData();
-            data.append('name', name);
-            data.append('email', email);
-            data.append('isChecked', isChecked);
-            data.append('selectedOption', selectedOption);
-            data.append('image', image); // Append the image to the form data
-            
-            // Make the API call to send the data to the backend
-            const response = await fetch('/api/submitForm', {
-                method: 'POST',
-                body: data
-            });
-            
-            // Handle the response from the backend
-            if (response.ok) {
-                // Form submission successful
-                console.log('Form submitted successfully');
-            } else {
-                // Form submission failed
-                console.error('Form submission failed');
+        const handleYearOfConstructionChange = (e) => {
+            setYearOfConstruction(parseInt(e.target.value));
+        };
+
+        const handleNumOfResidentsChange = (e) => {
+            setNumOfResidents(parseInt(e.target.value));
+        };
+
+        const handleHasParkingChange = (e) => {
+            setHasParking(e.target.checked);
+        };
+
+        const handlePictureUrlChange = (e) => {
+            setPictureUrl(e.target.value);
+        };
+
+        const handleSubmit = async (e) => {
+            e.preventDefault();
+
+            try {
+                // Prepare the data to be sent to the backend
+                const data = {
+                    street,
+                    sqMeters,
+                    floors,
+                    numOfRooms,
+                    numOfBathrooms,
+                    yearOfConstruction,
+                    numOfResidents,
+                    hasParking,
+                    pictureUrl
+                };
+
+                // Make the API call to send the data to the backend
+                const response = await fetch('http://localhost:8080/create', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                // Handle the response from the backend
+                if (response.ok) {
+                    // Form submission successful
+                    console.log('Form submitted successfully');
+                } else {
+                    // Form submission failed
+                    console.error('Form submission failed');
+                }
+            } catch (error) {
+                console.error('An error occurred while submitting the form', error);
             }
-        } catch (error) {
-            console.error('An error occurred while submitting the form', error);
-        }
-    };
+        };
+       
+        return (
+            <div className="login-form">
+                <h1>Navedite informacije za prodaju nekretnine</h1>
+                <form onSubmit={handleSubmit} className="inputForm">
+                    <label>
+                        <span>Street:</span>
+                        
+                        <input type="text" value={street} onChange={handleStreetChange}  style={{ marginLeft: '10px' }} />
+                    </label>
 
-    return (
-        <div class="login-form">
-            <h1>Navedite informacije za prodaju nekretnine</h1>
-            <form onSubmit={handleSubmit} class="inputForm">
-                <label>
-                    Name:
-                    <input type="text" value={name} onChange={handleNameChange} />
-                </label>
-                
-                <label>
-                    Email:
-                    <input type="email" value={email} onChange={handleEmailChange} />
-                </label>
-                
-                <label>
-                    <input type="checkbox" checked={isChecked} onChange={handleCheckboxChange} />
-                    Check me
-                </label>
-                
-                <label>
-                    Select an option:
-                    <select value={selectedOption} onChange={handleDropdownChange}>
-                        <option value="">-- Select --</option>
-                        <option value="option1">Option 1</option>
-                        <option value="option2">Option 2</option>
-                        <option value="option3">Option 3</option>
-                    </select>
-                </label>
-                
-                <div>
-                <label>
-                    Upload an image:
-                    <input type="file" accept="image/*" onChange={handleImageChange} />
-                </label>
-                </div>
-                
-                <div>
-                    <button type="submit" class="LoginButton">Submit</button>
-                </div>
-            </form>
-        </div>
-    );
+                    <label>
+                        Square Meters:
+                        
+                        <input type="number" value={sqMeters} onChange={handleSqMetersChange}  style={{ marginLeft: '10px' }} />
+                    </label>
+
+                    <label>
+                        Floors:
+                        
+                        <input type="number" value={floors} onChange={handleFloorsChange}  style={{ marginLeft: '10px' }} />
+                    </label>
+
+                    <label>
+                        Number of Rooms:
+                        
+                        <input type="number" value={numOfRooms} onChange={handleNumOfRoomsChange}  style={{ marginLeft: '10px' }} />
+                    </label>
+
+                    <label>
+                        Number of Bathrooms:
+                        
+                        <input type="number" value={numOfBathrooms} onChange={handleNumOfBathroomsChange}  style={{ marginLeft: '10px' }}/>
+                    </label>
+
+                    <label>
+                        Year of Construction:
+                        
+                        <input type="number" value={yearOfConstruction} onChange={handleYearOfConstructionChange}  style={{ marginLeft: '10px' }}/>
+                    </label>
+
+                    <label>
+                        Number of Residents:
+                        
+                        <input type="number" value={numOfResidents} onChange={handleNumOfResidentsChange}  style={{ marginLeft: '10px' }}/>
+                    </label>
+
+                    <label>
+                        Has Parking:
+                        <input type="checkbox" checked={hasParking} onChange={handleHasParkingChange} style={{ marginLeft: '10px' }}/>
+                    </label>
+
+                    <label>
+                        Picture URL:
+                        <input type="text" value={pictureUrl} onChange={handlePictureUrlChange}  style={{ marginLeft: '10px' }}/>
+                    </label>
+
+                    <div>
+                        <button type="submit" className="LoginButton">Submit</button>
+                    </div>
+                </form>
+            </div>
+        );
 };
 
 export default Home;
