@@ -6,7 +6,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: rgb(141, 117, 87);
+  background-color: rgb(99, 102, 241);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -14,14 +14,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-/*
-{
-  display: flex;
-  flex-direction: column;
-  justify-content:center;
-  align-items: center;
-}
-*/
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -30,12 +23,6 @@ a {
 
 
 body {
-  /*
-  margin: 0;
-  display: flex; 
-  align-items: center;
-  justify-content: center;
-  */
   min-width: 320px;
   min-height: 100vh;
 }
