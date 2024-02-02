@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const YourReactComponent = () => {
-    const [buttonColor, setButtonColor] = useState('red');
+const Login = () => {
     const [formData, setFormData] = useState({
         username: '',
         password: '',
     });
+
+    const NavigateTo = useNavigate();
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -14,8 +16,8 @@ const YourReactComponent = () => {
             [name]: value,
         });
     };
-
-    const handleFormSubmit =async  (e) => {
+    
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
         console.log(e)
         console.log(formData)
@@ -29,10 +31,13 @@ const YourReactComponent = () => {
             },
             body: JSON.stringify(formData),
         })
-        .then(response => response.json())
+        .then(response => response.text())
+        
         .then(data => {
             console.log('Success:', data);
             // Handle success response from the backend
+            // Redirect to the home page
+            NavigateTo('/');
         })
         .catch(error => {
             console.error('Error:', error);
@@ -90,4 +95,4 @@ const YourReactComponent = () => {
     );
 };
 
-export default YourReactComponent;
+export default Login;

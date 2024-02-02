@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 const List = () => {
         const [street, setStreet] = useState('');
+        const [price, setPrice] = useState(0);
         const [sqMeters, setSqMeters] = useState(0);
         const [floors, setFloors] = useState(0);
         const [numOfRooms, setNumOfRooms] = useState(0);
@@ -48,6 +49,10 @@ const List = () => {
             setPictureUrl(e.target.value);
         };
 
+        const handlepriceOfEstateChange = (e) => {
+            setPrice(parseInt(e.target.value));
+        };
+
         const handleSubmit = async (e) => {
             e.preventDefault();
 
@@ -55,6 +60,7 @@ const List = () => {
                 // Prepare the data to be sent to the backend
                 const data = {
                     street,
+                    price,
                     sqMeters,
                     floors,
                     numOfRooms,
@@ -62,7 +68,7 @@ const List = () => {
                     yearOfConstruction,
                     numOfResidents,
                     hasParking,
-                    pictureUrl
+                    pictureUrl 
                 };
 
                 // Make the API call to send the data to the backend
@@ -72,11 +78,13 @@ const List = () => {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(data)
+                    
                 });
 
                 // Handle the response from the backend
                 if (response.ok) {
                     // Form submission successful
+                    console.log(data);
                     console.log('Form submitted successfully');
                 } else {
                     // Form submission failed
@@ -142,7 +150,15 @@ const List = () => {
                         Picture URL:
                         <input type="text" value={pictureUrl} onChange={handlePictureUrlChange}  style={{ marginLeft: '10px' }}/>
                     </label>
+                    
 
+                    <label>
+                        <span>Price:</span>
+                        
+                        <input type="number" value={price} onChange={handlepriceOfEstateChange}  style={{ marginLeft: '10px' }}/>
+                    </label>
+
+                    
                     <div>
                         <button type="submit" className="LoginButton">Submit</button>
                     </div>
