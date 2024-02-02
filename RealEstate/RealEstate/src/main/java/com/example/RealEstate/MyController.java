@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -76,6 +77,11 @@ public class MyController {
 	    mongoTemplate.save(listing, "listings");
 	    return "Listing created successfully";
 	}
+	
+    @GetMapping("/listings")
+    public List<RealEstateListing> getAllListings() {
+        return mongoTemplate.find(new Query(), RealEstateListing.class, "listings");
+    }
 	
     private String hashData(String data) {
         try {
