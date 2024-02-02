@@ -11,3 +11,28 @@
 .LoginButton{
   background-color: rgb(29, 153, 153);
 }
+
+.container {
+  width: 100%;
+  margin-top: 3rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.estate {
+  flex-direction: column;
+
+  width: 310px;
+  height: 460px;
+  margin: 1.5rem;
+
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: none;
+
+  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+}

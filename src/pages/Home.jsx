@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import RealEstateCard from "../components/RealEstateCard.jsx";
 
 const API_URL = "http://localhost:8080/listings";
 
@@ -22,7 +23,20 @@ const Home = () => {
 
     return (
         <div>
-            <h1>Home Page</h1>
+            {listing?.length > 0 
+            ? (
+                <div className="container">
+                    {
+                        listing.map((estate) => (
+                            <RealEstateCard key={estate.id} Estate={estate} />
+                        ))
+                    }
+                </div>
+            ) : (
+                <div className="empty">
+                    <h2>No Real Estate found</h2>
+                </div>
+            )}
         </div>
     );
 };
