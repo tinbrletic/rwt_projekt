@@ -26,6 +26,14 @@ public class MyController {
     
     @PostMapping("/register")
     public String register(@RequestBody RegistrationData registrationData) {
+        User existingUser = mongoTemplate.findOne(
+                Query.query(Criteria.where("username").is(registrationData.getUsername())),
+                User.class, "users");
+
+        if (existingUser != null) {
+            return "Username already exists";
+        }
+    	
         // Hash the password before saving it
         String hashedPassword = hashData(registrationData.getPassword());
 

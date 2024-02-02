@@ -2,6 +2,7 @@ package com.example.RealEstate;
 
 public class RealEstateListing {
     private String street;
+    private int price;
     private int sqMeters;
     private int floors;
     private int numOfRooms;
@@ -64,5 +65,11 @@ public class RealEstateListing {
 	}
 	public void setPictureUrl(String pictureUrl) {
 		this.pictureUrl = pictureUrl;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
 	}
 }
