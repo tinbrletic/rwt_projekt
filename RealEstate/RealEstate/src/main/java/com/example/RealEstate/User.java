@@ -10,6 +10,7 @@ public class User {
 
     private String username;
     private String hashedPassword;
+    private String mail;
 
     // Constructors, getters, setters, etc.
 
@@ -17,9 +18,10 @@ public class User {
         // Default constructor required for Spring Data MongoDB
     }
 
-    public User(String username, String hashedPassword) {
+    public User(String username, String hashedPassword, String mail) {
         this.username = username;
         this.hashedPassword = hashedPassword;
+        this.mail = mail;
     }
 
     // Getters and setters
@@ -47,4 +49,12 @@ public class User {
     public void setHashedPassword(String hashedPassword) {
         this.hashedPassword = hashedPassword;
     }
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
 }

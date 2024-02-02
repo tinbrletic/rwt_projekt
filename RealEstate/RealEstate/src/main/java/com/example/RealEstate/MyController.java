@@ -39,6 +39,7 @@ public class MyController {
 
         // Create a User object with registration data
         User user = new User();
+        user.setMail(registrationData.getMail());
         user.setUsername(registrationData.getUsername());
         user.setHashedPassword(hashedPassword);
 
