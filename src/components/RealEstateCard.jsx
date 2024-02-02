@@ -1,21 +1,6 @@
-
 import React from 'react';
 import './RealEstateCard.css';  
 
-const obje = [
-    {
-        "street": "Vukovarska Ulica",
-        "price": 200000,
-        "sqMeters": 80,
-        "floors": 1,
-        "numOfRooms": 4,
-        "numOfBathrooms": 1,
-        "yearOfConstruction": 2004,
-        "numOfResidents": 4,
-        "hasParking": true,
-        "pictureUrl": "https://roel.com.hr/wp-content/uploads/2022/09/Peterosoban-stan-s-loggiom-i-vrtom-61RIF1A2-2-1170x785.jpg"
-    }
-]
 
 const RealEstateCard = ({ Estate }) =>{
         return (
@@ -37,6 +22,8 @@ const RealEstateCard = ({ Estate }) =>{
                         <span>{Estate.numOfRooms} rooms</span>
                         <br />
                         <span>{Estate.numOfBathrooms} bathrooms</span>
+                        <br />
+                        <span>{Estate.floors} floors</span>
                         <br />
                         <span>Year of construction: {Estate.yearOfConstruction}</span>
                         <br />
