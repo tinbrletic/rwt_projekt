@@ -24,6 +24,7 @@
 
 .estate {
   flex-direction: column;
+  background-color: rgb(31, 41, 55);
 
   width: 310px;
   height: 460px;

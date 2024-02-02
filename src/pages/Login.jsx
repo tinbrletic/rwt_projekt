@@ -47,7 +47,7 @@ const Login = () => {
 
     return (
         <div class="login-form">
-            <h2>Najmoderniji oglasnik za nekretnine u PGŽ</h2>
+            <h2><strong>Najmoderniji oglasnik za nekretnine u PGŽ</strong></h2>
             <form id='contanier' className='inputForm' onSubmit={handleFormSubmit}>
                 {/* Input for a username */}
                 <div>

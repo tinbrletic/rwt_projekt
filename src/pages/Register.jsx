@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterPage = () => {
     const [formData, setFormData] = useState({
@@ -6,6 +7,8 @@ const RegisterPage = () => {
         password: '',
         email: '',
     });
+
+    const navigate = useNavigate();
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -30,11 +33,12 @@ const RegisterPage = () => {
             });
 
             if (response.ok) {
-                const data = await response.json();
+                const data = await response.text();
                 console.log('Success:', data);
                 // Handle success response from the backend
+                navigate('/');
             } else {
-                const errorData = await response.json();
+                const errorData = await response.text();
                 console.error('Error:', errorData);
                 // Handle error response from the backend
             }
